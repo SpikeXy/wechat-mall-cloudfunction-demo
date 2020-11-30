@@ -1,0 +1,151 @@
+<view class="container">
+  <view class="swiper-container">
+    <swiper class="swiper_box" indicator-dots="true" indicator-active-color="#fff" autoplay="false" circular>
+    <!--暂时不需要视频栏-->
+      <!-- <swiper-item wx:if="{{goodsDetail.basicInfo.videoId}}">
+        <video src="{{videoMp4Src}}" autoplay="true" loop="true" style='width:100%;height:100%;'></video>
+      </swiper-item> -->
+      <swiper-item wx:for="{{goodsDetail.pic}}" wx:key="id">
+        <image src="{{item}}" class="slide-image" mode="aspectFill" lazy-load="true" />
+      </swiper-item>      
+    </swiper>
+  </view>
+  <view class="goods-info">
+    <view class="goods-title">{{goodsDetail.name}}</view>
+    <!-- <view class="goods-share" wx:if="{{goodsDetail.basicInfo.commissionType == 1}}">分享有赏，好友下单后可得 {{goodsDetail.basicInfo.commission}} 积分奖励</view>
+    <view class="goods-share" wx:if="{{goodsDetail.basicInfo.commissionType == 2}}">分享有赏，好友下单后可得 {{goodsDetail.basicInfo.commission}}元 现金奖励</view> -->
+    <view class="goods-profile">
+      <view class="p"><text>¥</text> {{selectSizePrice}}</view>
+      <view wx:if="{{goodsDetail.originalPrice}}" class="goods-price">
+        <text>¥</text> {{selectSizeOPrice}}
+      </view>
+      <view class="r">{{goodsDetail.numberSells}}人已买</view>
+    </view>
+    <!-- <view class="goods-info-fx">
+      <view class='item'>
+        <image src='/images/share/share1.png'></image>
+        <button open-type='share'></button>
+      </view>
+      <view class='item' bindtap="drawSharePic">
+        <image src='/images/share/share2.png'></image>
+      </view>
+    </view>     -->
+  </view>
+ 
+ 
+
+  <view class="goods-des-info">
+    <view class="label-title">商品介绍</view>
+    <view class="goods-text">
+        <view class="i-index-fixed-item" 
+                wx:for="{{goodsDetail.content}}" 
+                wx:key="{{index}}" 
+                data-index="{{index}}" 
+               >
+              <image  mode="scaleToFill" style="{{contentHeight}}" data-id="{{item._id}}" src="{{item}}"  />
+            </view>
+    </view>
+  </view>
+  <view class="goods-des-info" style="margin-top:35rpx;" >
+    <view class="label-title" style="border-bottom:1px solid #eee;">大家评价
+      <text style="color:red">（{{reputation.length}}）</text>
+    </view>
+    <view class="goods-text clearfix"  style="margin-top:15rpx;" wx:for="{{reputation}}" wx:key="id">
+      <view style="width:100rpx;float:left;">
+        <image style="width: 100rpx; height: 100rpx;" src="{{item.user.avatarUrl}}"></image>
+        <view style="text-align:center;width:100rpx;">{{item.goods.goodReputationStr}}</view>
+      </view>
+      <view style="width:550rpx;float:left;margin-left:35rpx;border-bottom:1px solid #eee;">
+        <view>{{item.goods.goodReputationRemark}}</view>
+        <view style="color: #B0B0B0;font-size:24rpx;">{{item.goods.dateReputation}} {{item.goods.property}}</view>
+      </view>
+    </view>
+  </view>
+
+
+  <view  class="footer-box">
+    <view class="contact">
+      <button type="primary" open-type="contact" />
+      <image src="/images/icon/kf.svg"></image>
+    </view>
+    <view class="shop-cart-btn" bindtap="goShopCar">
+      <view class="shop-num">{{shopNum}}</view>
+      <image src="/images/nav/cart-off.png"></image>
+    </view>
+    <image bindtap="clickFav" class="fav-icon" src="/images/icon/fav{{faved?'1':'0'}}.svg"></image>
+
+    <view class="join-shop-cart" bindtap="addCartPop">加入购物车</view>
+    <view class="now-buy" bindtap="buyNowPop">立即购买</view>
+
+  </view>
+
+  <view class="show-popup" hidden="{{hideShopPopup}}" catchtouchmove="true">
+    <view class="popup-mask" bindtap="closePopupTap"></view>
+    <view class="popup-contents">
+      <view class="pop-goods-info">
+        <view class="pop-goods-des">
+          <view class="pop-goods-title">{{goodsDetail.name}}</view>
+          <view class="pop-goods-price">
+            ¥ <text class="t1">{{selectSizePrice}}</text>
+            <text wx:if="{{goodsDetail.basicInfo.originalPrice && goodsDetail.basicInfo.originalPrice > 0}}" class="pop-goods-price-original"><text>¥</text> {{selectSizeOPrice}}</text>
+          </view>
+        </view>
+        <image class="pop-goods-close" src="/images/icon/close0.svg" bindtap="closePopupTap"></image>
+      </view>
+      <view class="size-label-box" wx:if="{{specs.length>0}}">
+        <block wx:for="{{specs}}" wx:for-item="item" wx:for-index="idx" wx:key="id">
+          <view class="label">{{item.name}}</view>
+          <view class="label-item-box">
+            <view class="label-item {{small.active ? 'active' : '' }}"
+             wx:for="{{item.subSpecs}}"
+             wx:for-item="small" 
+              data-parentid="{{small.parentId}}" 
+              data-id="{{small._id}}"
+              bindtap="skuSelect" >
+              {{small.name}}
+            </view>
+          </view>
+        </block>
+      </view>
+      <view class="buy-num-box">
+        <view class="num-label">购买数量</view>
+        <view class="num-box">
+          <view class="num-jian {{buyCount == buyNumMin ? 'hui': ''}}" bindtap="numJianTap">-</view>
+          <view class="num-input">
+            <input type="number" value="{{buyCount}}" disabled/>
+          </view>
+          <view class="num-jia {{buyCount== storeCount ? 'hui': ''}}" bindtap="numJiaTap">+</view>
+        </view>
+      </view>
+      <view class="safeAreaOldPaddingBttom safeAreaNewPaddingBttom" wx:if="{{buyByCart}}" bindtap="addCart">
+        <view class="popup-join-btn">加入购物车</view>
+      </view>
+      <view class="safeAreaOldPaddingBttom safeAreaNewPaddingBttom" wx:if="{{!buyByCart}}"  bindtap="buyNow">
+        <view class="popup-join-btn">立即购买</view>
+      </view>
+    </view>
+  </view>
+  <view class="safeAreaOldMarginBttom safeAreaNewMarginBttom"></view>
+</view>
+
+<block wx:if="{{posterShow}}">
+  <view class="poster-mask"></view>
+  <view class="poster">
+    <canvas class="canvas" style="{{canvasstyle}}" canvas-id="firstCanvas"></canvas>
+  </view>
+  <view class="poster-btn">
+    <button type="primary" size="mini" bindtap='_saveToMobile'> 保存图片 </button>
+    <button type="warn" size="mini" bindtap='closePop'> 关闭 </button>
+  </view>
+</block>
+
+<template is="apifmLogin" data="{{wxlogin: wxlogin}}" />
+<!-- <float-menu />  -->
+
+
+<poster id="poster" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail"></poster>
+<view wx:if="{{showposterImg}}" class="popup-mask"></view>
+<view wx:if="{{showposterImg}}" class="posterImg-box">
+  <image mode="widthFix" class="posterImg" src="{{posterImg}}"></image>
+  <view class="btn-create" bindtap="savePosterPic">保存到相册</view>
+</view>

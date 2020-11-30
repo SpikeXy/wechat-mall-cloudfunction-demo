@@ -1,0 +1,245 @@
+@import "/template/login/index.wxss";
+
+page,view,image,input {
+  display: block;
+  box-sizing: border-box;
+}
+
+.container{
+  min-height: 100%;
+  overflow: hidden;
+  overflow-y: hidden;
+}
+.noAvatarClass{
+  margin-bottom:50rpx;
+  margin-bottom: 21px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.userinfo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  width: 750rpx;
+}
+.userinfo-avatar {
+	width: 160rpx;
+	height: 160rpx;
+  border: 1rpx solid #eee;
+  border-radius: 50%;
+}
+.userinfo-nickname {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  font-size: 14px;
+}
+
+.asset {
+  display: flex;
+  border-top: 1px solid #eee;
+  padding-top:20rpx;
+  padding-bottom:20rpx;
+}
+.asset .item {
+  display: flex;
+  flex-direction: column;
+  width:187rpx;
+  text-align: center;
+  font-size: 13px;
+  line-height: 20px;
+  color:#333;
+}
+.asset .right {
+  border-left: 1px solid #eee;
+}
+
+.version {
+  width:100vw;
+	font-size: 24rpx;
+	text-align: center;
+  padding: 32rpx;
+}
+
+.order-shortcut {
+  display: flex;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+.order-shortcut .item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 150rpx;
+  text-align: center;
+}
+.order-shortcut .item .dot {
+  position: absolute;
+  right: 20rpx;
+  top: -8rpx;
+  min-width: 32rpx;
+  height: 32rpx;
+  padding: 0 7rpx;
+  line-height: 32rpx;
+  font-size: 18rpx;
+  border-radius: 32rpx;
+  background: #FF4949;
+  color: #fff;
+  text-align: center;
+}
+.order-shortcut .item .icon {
+  width: 67rpx;
+  height: 67rpx;
+  margin-left: 45rpx;
+}
+.order-shortcut .item .text {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #666;
+}
+.to-authorize{
+  padding: 0rpx;
+  margin: 0rpx;
+  background: none;
+  border: none;
+  height: auto;
+  line-height: auto;
+}
+/* 绑定手机号 */
+.bind-phone-number{
+  margin: 20rpx;
+  width: 100%;
+}
+/* flex重新构建菜单 */
+.menu-item {
+  width: 100vw;
+  height: 104rpx;
+  padding: 0 32rpx;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.menu-item .l {
+  font-size:34rpx;
+  color:#333;
+  line-height:104rpx;
+}
+.menu-item .r {
+  font-size:32rpx;
+  color:#999;
+  line-height:104rpx;
+}
+.menu-item .next {
+  width: 40rpx;
+  height: 40rpx;
+}
+.menu-item button {
+  margin: 0;
+}
+.space {
+  width: 100vw;
+  height: 16rpx;
+  background: #F4F5F9;
+}
+.line {
+  width:718px;
+  height:1px;
+  background:#EEEEEE;
+  margin-left: 32rpx;
+}
+
+
+.apifmLogin {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 99999999999;
+}
+
+.apifmLogin .s-b {
+  width: 70%;
+  margin: 0 auto;
+  height: 600rpx;
+  background-color: #fff;
+  margin-top: 40%;
+  border-radius: 10rpx;
+}
+
+.apifmLogin .s-b .s-l-b {
+  text-align: center;
+  width: 80%;
+  border-bottom: 1px solid #f5f5f5;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.apifmLogin .s-b .s-l-b image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+.apifmLogin .s-b .s-l-b text {
+  font-size: 32rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  color: #333;
+}
+
+.apifmLogin .s-b .s-t-b {
+  margin-top: 20rpx;
+  margin-bottom: 40rpx;
+  text-align: center;
+}
+
+.apifmLogin .s-b .s-t-b .s-t-n {
+  font-size: 30rpx;
+  color: #333;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.apifmLogin .s-b .s-t-b .s-t-i {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 10rpx;
+}
+
+.apifmLogin .s-b .s-t-b .s-t-i text {
+  margin-right: 10rpx;
+  font-size: 26rpx;
+}
+
+.apifmLogin .s-b button::after {
+  border-radius: 4rpx;
+  border: 0;
+}
+
+.apifmLogin .s-b .l {
+  width: 80%;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 30rpx;
+  background-color: #04be01;
+  color: #fff;
+}
+
+.apifmLogin .s-b .c {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  width: 80%;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 30rpx;
+  background-color: #ccc;
+  color: #333;
+}

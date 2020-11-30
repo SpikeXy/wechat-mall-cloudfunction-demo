@@ -1,0 +1,69 @@
+<view class="container">
+  <view class="goods-list">
+    <view class="list-title">商品列表</view>
+    <view class="a-goods" wx:for="{{goodsList}}" wx:key="{{index}}">
+      <view class="img-box">
+        <image src="{{item.pic[0]}}" class="img" />
+      </view>
+      <view class="text-box">
+        <view class="arow arow01">
+          <view class="goods-name">{{item.name}}</view>
+          <view class="goods-price">¥ {{item.minPrice}}</view>
+        </view>
+        <view class="arow">
+          <view class="goods-label" wx:for="{{item.specs}}" wx:for-item="specsItem">
+            <block wx:for="{{specsItem.cartSpecsModels}}" wx:for-item="option" wx:key="index">
+              {{specsItem.name}}:{{option.name}}
+            </block>
+          </view>
+          <view class="goods-num">x {{item.count}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="peisong-way">
+    <view class="row-box" >
+      <view class="row-label">配送方式</view>
+      <radio-group >
+        <label class="radio">
+          <radio value="kd" checked="true" /> 快递
+        </label>
+      </radio-group>
+    </view>
+    <view class="address-box" >
+      <view class="add-address" hidden="{{isSelectAddress}}" bindtap="selectAddress">
+        <image src="/images/add-addr.png"></image>
+        <view>选择收货地址</view>
+      </view>
+      <view class="show-address" hidden="{{!isSelectAddress}}" >
+        <view class="l">
+          <view class="name-tel">{{curAddressData.linkMan}} {{curAddressData.mobile}}</view>
+          <view class="addr-text">{{curAddressData.addressDetail}}</view>
+   
+        </view>
+               <van-button type="default" bindtap="delAddress">删除</van-button>
+      </view>
+    </view>
+    <view class="row-box">
+      <view class="row-label">备注</view>
+      <view class="right-text">
+        <input bindinput="remarkChange" type="text" class="liuyan" placeholder="如需备注请输入" />
+      </view>
+    </view>
+  </view>
+
+
+  <view class="goods-info">
+    <view class="row-box">
+      <view class="row-label">商品金额</view>
+      <view class="right-text">¥ {{totalPrice}}</view>
+    </view>
+  </view>
+
+  <view class="jiesuan-box">
+    <view class="left-price">
+      <view class="total">合计：¥ {{totalPrice}} </view>
+    </view>
+    <button class="to-pay-btn" bindtap="createOrder">提交订单</button>
+  </view>
+</view>

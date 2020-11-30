@@ -1,0 +1,62 @@
+/* pages/aboutUs/index.wxss */
+
+/* flex重新构建菜单 */
+page{
+  display: block;
+  box-sizing: border-box;
+  background-color: #F2f2f2;
+}
+
+
+.container{
+  min-height: 100%;
+  overflow: hidden;
+  overflow-y: hidden;
+  background-color: #F2f2f2;
+}
+.menu-item {
+  width: 100vw;
+  height: 104rpx;
+  padding: 0 32rpx;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.menu-item .l {
+  font-size:34rpx;
+  color:#333;
+  line-height:104rpx;
+}
+.menu-item .r {
+  font-size:32rpx;
+  color:#999;
+  line-height:104rpx;
+}
+.menu-item .next {
+  width: 40rpx;
+  height: 40rpx;
+}
+.menu-item button {
+  margin: 0;
+}
+.title{
+  text-align: center;
+  font-size:57rpx;
+}
+.space {
+  width: 100vw;
+  height: 16rpx;
+  background: #F4F5F9;
+}
+.transferCardClass{
+  display: flex;
+  flex-direction: column;
+}
+.cardClass{
+  border:2px solid rgb(116, 115, 115);
+  background-color: rgb(214, 213, 213)!important;
+  padding:10rpx 10rpx;
+  margin:10rpx 30rpx;
+}
+

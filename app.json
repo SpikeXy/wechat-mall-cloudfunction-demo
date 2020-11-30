@@ -1,0 +1,109 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/notice/index",
+    "pages/notice/show",
+    "pages/category/category",
+    "pages/goods/list",
+    "pages/goods/fav",
+    "pages/goods-details/index",
+    "pages/shop-cart/index",
+    "pages/to-pay-order/index",
+    "pages/order-list/index",
+    "pages/order-details/index",
+    "pages/wuliu/index",
+    "pages/my/index",
+    "pages/coupons/index",
+    "pages/aboutUs/index",
+    "pages/good-manage/index",
+    "pages/good-manage/add",
+    "pages/good-manage/edit",
+    "pages/notice-manage/index",
+    "pages/notice-manage/edit",
+    "pages/notice-manage/add",
+    "pages/specs-manage/index",
+    "pages/specs-manage/edit",
+    "pages/specs-manage/add",
+    "pages/specs-manage/subEdit",
+    "pages/specs-manage/subAdd",
+    "pages/good-recommand-manage/index",
+    "pages/direct-pay-order/index",
+    "pages/rotation-manage/index",
+    "pages/rotation-manage/add",
+    "pages/rotation-manage/edit",
+    "pages/order-manage/index",
+    "pages/transfer-manage/index",
+    "pages/transfer-manage/editAddress"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black",
+    "onReachBottomDistance": 50
+  },
+  "tabBar": {
+    "color": "#6e6d6b",
+    "selectedColor": "#e64340",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/nav/home-off.png",
+        "selectedIconPath": "images/nav/home-on.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "iconPath": "images/nav/ic_catefory_normal.png",
+        "selectedIconPath": "images/nav/ic_catefory_pressed.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/shop-cart/index",
+        "iconPath": "images/nav/cart-off.png",
+        "selectedIconPath": "images/nav/cart-on.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "iconPath": "images/nav/my-off.png",
+        "selectedIconPath": "images/nav/my-on.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取离你最近的门店"
+    }
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx56c8f077de74b07c"
+  ],
+  "usingComponents": {
+    "float-menu": "/components/float-menu/index",
+    "parser": "/components/parser.20200414.min/parser",
+    "van-notice-bar": "@vant/weapp/notice-bar/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-divider": "@vant/weapp/divider/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-count-down": "@vant/weapp/count-down/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-uploader": "@vant/weapp/uploader/index",
+    "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
+    "van-dropdown-item": "@vant/weapp/dropdown-item/index",
+    "van-switch": "@vant/weapp/switch/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index"
+  },
+  "sitemapLocation": "sitemap.json",
+  "plugins":{
+    "live-player-plugin": {
+      "version": "1.1.7",
+      "provider": "wx2b03c6e691cd7370" 
+    }
+  }
+}

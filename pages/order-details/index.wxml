@@ -1,0 +1,127 @@
+<view class="container">
+	<view class="sec-wrap">
+		<view class="order-status">
+			<view class="icon-box">
+				<image wx:if="{{orderDetail.status=='订单关闭'}}" class="icon" src="/images/order-details/icon-ddgb.png"></image>
+				<image wx:elif="{{orderDetail.status=='待付款'}}" class="icon" src="/images/order-details/icon-ddfk.png"></image>
+				<image wx:elif="{{orderDetail.status=='待发货'}}" class="icon" src="/images/order-details/icon-ddfh.png"></image>
+				<image wx:elif="{{orderDetail.status=='待收货'}}" class="icon" src="/images/order-details/icon-ddsh.png"></image>
+				<image wx:elif="{{orderDetail.status== '待评价'}}" class="icon" src="/images/order-details/icon-jycg.png"></image>
+				<image wx:elif="{{orderDetail.status== '评价完成'}}" class="icon" src="cloud://aminah-g5t4h.616d-aminah-g5t4h-1302451841/global-image/details/完成.svg"></image>
+			</view>
+			<view class="right-text">
+				<view class="status red">{{orderDetail.status}}</view>
+			</view>
+		</view>
+		<block wx:if="{{orderDetail.transferNumber}}">
+			<view class="wuliu-box">
+				<view class="icon-box">
+					<image class="icon" src="/images/order-details/icon-wuliu.png"></image>
+				</view>
+				<view class="right-text" >
+					<view class="order-number">快递名称：{{orderDetail.transferCompanyName}}</view>
+					<view class="order-number" >快递单号：{{orderDetail.transferNumber}}</view>
+				</view>
+			</view>
+			<view class="address-sec">
+				<view class="icon-box">
+					<image class="icon" src="/images/order-details/icon-address.png"></image>
+				</view>
+				<view class="right-box">
+					<view class="name-tel">收货地址</view>
+					<view class="text">
+					{{orderDetail.linkMan}} {{orderDetail.mobile}} 	{{orderDetail.provinceName}} 	{{orderDetail.city}} 	{{orderDetail.area}}	{{orderDetail.address}}
+					</view>
+				</view>
+			</view>
+		</block>
+	</view>
+
+	<view class="goods-list">
+		<view class="list-title">商品信息</view>
+		<form bindsubmit="submitReputation" report-submit="true">
+			<block wx:for="{{orderDetail.goodsList}}" wx:key="{{index}}">
+				<navigator url="/pages/goods-details/index?id={{item._id}}">
+					<view class="a-goods">
+						<view class="img-box">
+							<image src="{{item.pic[0]}}" class="img" />
+						</view>
+						<view class="text-box">
+							<view class="arow arow01">
+								<view class="goods-name">{{item.name}}</view>
+								<view class="goods-price">¥ {{item.minPrice}}</view>
+							</view>
+							<view class="arow">
+								<view class="goods-label">{{item.specs[0].name}} : {{item.specs[0].cartSpecsModels[0].name}}</view>
+								<view class="goods-num">x {{item.count}}</view>
+							</view>
+						</view>
+					</view>
+				</navigator>
+
+			</block>
+			<view class="btn-row" wx:if="{{orderDetail.status=='待评价'}}">
+				<view class="btn-row">
+					<view class="section section_gap">
+						<view style="margin-top:35rpx;margin-bottom:35rpx;">评价：</view>
+						<radio-group name="goodReputation">
+							<label style="margin-right:35rpx;">
+								<radio value="2" checked />好评</label>
+							<label style="margin-right:35rpx;">
+								<radio value="1" />中评</label>
+							<label style="margin-right:35rpx;">
+								<radio value="0" />差评</label>
+						</radio-group>
+					</view>
+					<view class="row-box" style="margin-top:35rpx">
+						<view class="row-label">买家秀</view>
+						<van-uploader file-list="{{ fileList }}" bind:delete="delete" bind:after-read="afterRead" />
+					</view>
+
+					<view class="row-box" style="margin-top:35rpx">
+						<view class="row-label">备注</view>
+						<textarea name="goodReputationRemark" style="margin-top:35rpx;width:100%;" value="非常愉快的一次购物！" />
+						</view>
+        </view>
+        <button style="float:right;" class="confirm-btn" formType="submit">提交评价</button>
+      </view>
+    </form>
+    <form bindsubmit="confirmBtnTap" report-submit="true">
+      <view class="btn-row" wx:if="{{orderDetail.status=='待收货'}}">
+        <button class="confirm-btn" formType="submit">确认收货</button>
+      </view>
+    </form>
+    			<view class="btn-row" wx:if="{{orderDetail.status=='评价完成'}}">
+				<view class="btn-row">
+					<view class="section section_gap">
+						<view style="margin-top:35rpx;margin-bottom:35rpx;">评价：{{orderDetail.reputation}}</view>
+					</view>
+          				<view class="row-box" style="margin-top:35rpx">
+						<view class="row-label">买家秀</view>
+              <view wx:for='{{orderDetail.reputationImages}}' >
+                <image src="{{item}}" mode="widthFix" style='width:100rpx' />
+              </view>
+            </view>
+        
+					<view class="row-box" style="margin-top:35rpx">
+						<view class="row-label">备注：{{orderDetail.reputationRemark}}</view>
+						</view>
+        </view>
+      </view>
+  </view>
+
+  <view class="goods-info">
+    <view class="row-box">
+      <view class="row-label">商品金额</view>
+      <view class="right-text">¥ {{orderDetail.totalPrice}}</view>
+    </view>
+    <view class="row-box">
+      <view class="row-label">运费</view>
+      <view class="right-text">+ ¥ 0 </view>
+    </view>
+    <view class="row-box">
+      <view class="row-label">应付总额</view>
+      <view class="right-text">¥ {{orderDetail.totalPrice}}</view>
+    </view>
+  </view>
+</view>

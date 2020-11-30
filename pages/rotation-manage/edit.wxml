@@ -1,0 +1,12 @@
+<view class="notice">
+	<view class="title">
+  						<input name="name" class="weui-input" type="text"  bindinput="titleInputChange"
+               placeholder="请填写消息标题" value="{{title}}" /></view>
+						<view class="imageClass">
+  					<van-uploader max-count="1" file-list="{{ fileList }}" bind:delete="delete" bind:after-read="afterRead" />
+						</view>
+								 <view class="addButtonClass">
+	<button type="primary" class="save-btn" bindtap="submitContent">提交</button>
+	<button type="warn" class="delete-btn" bindtap="deleteContent">删除</button>
+</view>
+	</view>

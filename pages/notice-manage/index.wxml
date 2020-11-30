@@ -1,0 +1,10 @@
+<navigator wx:for="{{noticeList}}" wx:key="id" url="/pages/notice-manage/edit?id={{item._id}}">
+  <view class='cashlogs'>
+    <view class='profile'>
+      <view class='typeStr'>{{item.title}}</view>
+      <view class='dateAdd'>{{ item.dateAdd }}</view>
+    </view>
+    <view class='amount'> 编辑 > </view>
+  </view>
+</navigator>
+<button type="primary" class="addButtonClass" bindtap="addClick" size="large">新增</button>

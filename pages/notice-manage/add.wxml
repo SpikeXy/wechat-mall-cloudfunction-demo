@@ -1,0 +1,10 @@
+<view class="notice">
+	<view class="title">
+  						<input name="name" class="weui-input" type="text"  bindinput="titleInputChange"
+               placeholder="请填写消息标题" value="{{title}}" /></view>
+
+	<textarea auto-focus='true' name="textarea" value="{{content}}" bindinput='textAreaChange' class="input-textarea"  maxlength="5000" />
+								 <view class="addButtonClass">
+	<button type="primary" class="save-btn" bindtap="submitNotice">提交</button>
+</view>
+	</view>

@@ -1,0 +1,28 @@
+<view class="container">
+	<view class="transferCardClass">
+		<text class="title">已签约快递</text>
+		<view class="cardClass" wx:for="{{transferEnterpriseInfo}}" wx:for-item="enterInfo" wx:key="bizId">
+			<view>快递方: {{enterInfo.deliveryId}}</view>
+			<view>快递客户账号: {{enterInfo.bizId}}</view>
+			<view>电子面单余额: {{enterInfo.quotaNum}}</view>
+			<view wx:for="{{enterInfo.serviceType}}" wx:for-item="serviceTypeItem">
+				<view>服务类型: {{serviceTypeItem.serviceName}}</view>
+			</view>
+		</view>
+<van-divider dashed />
+	<text class="title">默认发货地址</text>
+		<view class="cardClass" >
+			<view>联系人: {{linkman}}</view>
+			<view>联系电话: {{mobile}}</view>
+			<view>详细地址: {{addressTemp}}</view>
+						<view>备注: {{remark}}</view>
+		</view>
+<van-divider dashed />
+		<navigator url="/pages/transfer-manage/editAddress">
+			<view class="menu-item">
+				<view class="l">设置默认发货地址</view>
+				<image class="next" src="/images/icon/next.png"></image>
+			</view>
+		</navigator>
+	</view>
+</view>

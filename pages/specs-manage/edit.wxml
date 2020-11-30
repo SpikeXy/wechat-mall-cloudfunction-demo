@@ -1,0 +1,22 @@
+<view class="notice">
+	<view class="title">
+		<input name="name" class="weui-input" type="text" bindinput="nameInputChange" placeholder="请填写规格名称" value="{{name}}" /></view>
+	
+	<view class="spaceModelClass" style="{{spaceInnerClass}}">
+	<navigator wx:for="{{subSpecs}}" wx:key="id" url="/pages/specs-manage/subEdit?id={{item._id}}">
+		<view class='cashlogs'>
+			<view class='profile'>
+				<view class='typeStr'>{{item.name}}</view>
+			</view>
+			<view class='amount'> 编辑 > </view>
+		</view>
+	</navigator>
+	</view>
+
+	<view class="addButtonClass">
+		<button type="primary" class="save-btn" data-id="{{_id}}" bindtap="addSubSpecs">新增子规格</button>
+		<button type="primary" class="save-btn"  bindtap="submitSpecs">提交</button>
+		<button type="warn" class="delete-btn" bindtap="deleteSpecs">删除</button>
+	</view>
+
+</view>

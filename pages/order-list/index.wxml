@@ -1,0 +1,45 @@
+<view class="container">
+	<view class="status-box">
+		<view bindtap="statusTap" class="status-label {{item.status == status ? 'active' : ''}}" wx:for="{{statusType}}" wx:key="index" data-label="{{item.label}}" data-status="{{item.status}}">
+			{{item.label}}
+			<view wx:if="{{badges[index] > 0 }}" class="weui-badge" style="position: absolute;top: 5rpx;right: 5rpx;">{{badges[index]}}</view>
+		</view>
+	</view>
+	<view class="no-order" hidden="{{orderList.length > 0 ? true : false}}">
+		<image src="/images/no-order.png" class="no-order-img"></image>
+		<view class="text">暂无订单</view>
+	</view>
+	<view class="order-list" hidden="{{orderList.length > 0 ? false : true}}">
+		<view class="a-order" wx:for="{{orderList}}" wx:key="index">
+			<navigator url="/pages/order-details/index?id={{item._id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+				<view class="weui-cell__bd">订单编号：{{item.orderId}}</view>
+				<view class="weui-cell__ft weui-cell__ft_in-access">{{item.statusStr}}</view>
+			</navigator>
+			<scroll-view class="goods-img-container" scroll-x="true">
+				<view class="img-box" wx:for="{{item.goodsList}}" wx:for-item="small" wx:key="index">
+					<navigator url="/pages/goods-details/index?id={{small._id}}">
+						<image src="{{small.pic[0]}}" class="goods-img"></image>
+					</navigator>
+				</view>
+			</scroll-view>
+			<view class="goods-price">
+				共 {{item.goodsList.length}} 件商品 合计：
+				<text class="p" >¥ {{item.totalPrice}}</text>
+			</view>
+			<view class="goods-info">
+				<view class="goods-des">
+					<view class="remark" wx:if="{{item.remark && item.remark != ''}}">{{item.remark}}</view>
+					<view>{{item.dateTime}} </view>
+				</view>
+			</view>
+			<view class="price-box">
+				<view class="btn" hidden="{{item.status=='待支付'? false : true}}" bindtap="cancelOrderTap" data-id="{{item._id}}">取消订单</view>
+				<view class="btn active" hidden="{{item.status=='待支付'? false : true}}" bindtap="toPayTap" data-id="{{item._id}}" data-totalPrice="{{item.totalPrice}}">马上付款</view>
+				<view class="btn active" hidden="{{item.status=='待评价' ? false : true}}" bindtap="refundApply" data-id="{{item._id}}" data-totalPrice='{{item.totalPrice}}'>退换货</view>
+				<view class="btn active" hidden="{{item.status=='待发货' ? false : true}}" >待发货</view>
+				<view class="btn " hidden="{{item.status=='评价完成' ? false : true}}" >已完成</view>
+			</view>
+		</view>
+	</view>
+	<view class="safeAreaOldMarginBttom safeAreaNewMarginBttom"></view>
+</view>

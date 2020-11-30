@@ -1,0 +1,49 @@
+
+page{
+  min-height: 100%;
+
+}
+/* .container{
+  min-height: 100%;
+  overflow: hidden;
+  overflow-y: hidden;
+} */
+
+.notice {
+  padding: 32rpx;
+  font-size: 26rpx;
+  color: #333;
+  min-height: 900rpx;
+ overflow-x: hidden;
+ overflow-y: hidden;
+}
+.title {
+  width: 100%;
+  font-weight: bold;
+  border-bottom: 1rpx solid #eaeaea;
+  padding-bottom: 32rpx;
+}
+
+.text image {
+  max-width: 100%;
+}
+.input-textarea{
+  margin-top: 32rpx;
+  min-height: 350px;  
+  line-height: 64rpx;
+  border: 1px solid #ccc;
+  width:100%;
+  min-width:100%;
+}
+.save-btn{
+  margin-top: 15rpx;
+}
+.delete-btn{
+  margin-top: 15rpx;
+}
+.addButtonClass{
+  position:fixed;
+  width:90%;
+  bottom:0px;
+  border-radius: 0px;
+}

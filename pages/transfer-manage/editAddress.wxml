@@ -1,0 +1,79 @@
+<view class="page">
+	<view class="page__bd">
+		<form bindsubmit="bindSubmit">
+			<view class="weui-cells weui-cells_after-title">
+				<view class="weui-cell">
+					<view class="weui-cell__hd">
+						<view class="weui-label">联系人</view>
+					</view>
+					<view class="weui-cell__bd">
+						<input name="name" class="weui-input" type="text" bindinput="linkManInputChange" placeholder="请填写联系人名称" value="{{linkman}}" />
+					</view>
+				</view>
+			</view>
+			<view class="weui-cells weui-cells_after-title">
+				<view class="weui-cell">
+					<view class="weui-cell__hd">
+						<view class="weui-label">联系电话</view>
+					</view>
+					<view class="weui-cell__bd">
+						<input name="name" class="weui-input" type="text" bindinput="mobileInputChange" placeholder="请填写联系人电话" value="{{mobile}}" />
+					</view>
+				</view>
+			</view>
+			<view class="weui-cells weui-cells_after-title">
+				<view class="weui-cell">
+					<view class="weui-cell__hd">
+						<view class="weui-label">公司名称</view>
+					</view>
+					<view class="weui-cell__bd">
+						<input name="name" class="weui-input" type="text" bindinput="companyInputChange" placeholder="请填写公司名称" value="{{company}}" />
+					</view>
+				</view>
+			</view>
+
+			<view class="weui-cells weui-cells_after-title">
+				<view class="weui-cell">
+					<view class="weui-cell__hd">
+						<view class="weui-label">省市区选择</view>
+					</view>
+					<view class="weui-cell__bd areaClass">
+						<view>{{addressTemp}}</view>
+						<van-button type="default" bindtap="showPopup">选择</van-button>
+
+
+					</view>
+				</view>
+			</view>
+
+			<view class="weui-cells weui-cells_after-title">
+				<view class="weui-cell">
+					<view class="weui-cell__hd">
+						<view class="weui-label">详细地址</view>
+					</view>
+					<view class="weui-cell__bd">
+						<textarea auto-focus='false' name="textarea" value="{{address}}" bindinput='addressInputChange' class="input-textarea" maxlength="5000" />
+						</view>
+				</view>
+			</view>
+			<view class="weui-cells weui-cells_after-title">
+				<view class="weui-cell">
+					<view class="weui-cell__hd">
+						<view class="weui-label">备注</view>
+					</view>
+					<view class="weui-cell__bd">
+						<textarea auto-focus='false' name="textarea" value="{{remark}}" bindinput='remarkInputChange' class="input-textarea" maxlength="5000" />
+						</view>
+				</view>
+			</view>
+			<view class="weui-btn-area">
+				<button type="primary" class="save-btn" formType="submit">提交</button>
+			</view>
+		</form>
+	</view>
+</view>
+
+
+<van-popup  custom-style="width: 90%;" show="{{ show }}" bind:close="onClose">
+	<van-area area-list="{{ areaList }}" bind:confirm="confirmSelectArea"  style="width:600rpx;" title="省市区选择" /> 
+</van-popup>

@@ -1,0 +1,152 @@
+<view class="page">
+	<view class="page__bd">
+		<form bindsubmit="bindSubmit">
+			<view class="weui-cells weui-cells_after-title">
+				<view class="weui-cell">
+					<view class="weui-cell__hd">
+						<view class="weui-label">商品名称</view>
+					</view>
+					<view class="weui-cell__bd">
+						<input name="name" class="weui-input" type="text" bindinput="nameInputChange" placeholder="请填写商品名称" wx:value="{{name}}" />
+					</view>
+				</view>
+				<view class="weui-cell">
+					<view class="weui-cell__hd">
+						<view class="weui-label">原价</view>
+					</view>
+					<view class="weui-cell__bd">
+						<input name="originalPrice" class="weui-input" type="number" bindinput="originalPriceInputChange" placeholder="请填写原价" value="{{originalPrice}}" />
+					</view>
+				</view>
+				<view class="weui-cell">
+					<view class="weui-cell__hd">
+						<view class="weui-label">售价</view>
+					</view>
+					<view class="weui-cell__bd">
+						<input name="minPrice" class="weui-input" type="text" placeholder="请填写售价" bindinput="minPriceInputChange" value="{{minPrice}}" />
+					</view>
+				</view>
+				<view class="weui-cell">
+					<view class="weui-cell__hd">
+						<view class="weui-label">商品分类</view>
+					</view>
+					<view class="">
+						<van-dropdown-menu>
+							<van-dropdown-item value="{{ categoryId }}" bind:change="changeCategory" options="{{ goodCategoryOptions }}" />
+						</van-dropdown-menu> 
+							<!-- <view wx:for="{{ goodCategoryOptions }}">
+								<van-checkbox data-id="{{item.value}}" bind:change="changeCategoryClick" value="{{item.checked}}" name="{{item.value}}">
+									<image src="{{item.icon}}" mode='heightFix' style="height:70rpx;" />
+									{{item.text}}
+								</van-checkbox>
+							</view> -->
+					</view>
+				</view>
+			</view>
+
+
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<view class="weui-label">状态</view>
+				</view>
+				<view class="weui-cell__bd">
+					<van-dropdown-menu>
+						<van-dropdown-item value="{{ status }}" options="{{ goodStatusOption }}" />
+					</van-dropdown-menu>
+				</view>
+			</view>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<view class="weui-label">是否推荐</view>
+				</view>
+				<view class="weui-cell__bd">
+					<van-dropdown-menu>
+						<van-dropdown-item value="{{ recommendStatus }}" options="{{ recommendStatusOption }}" />
+					</van-dropdown-menu>
+				</view>
+			</view>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<view class="weui-label">库存数量</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input name="stores" class="weui-input" type="text" bindinput="storesInputChange" placeholder="请填写库存数量" value="{{stores}}" />
+				</view>
+			</view>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<view class="weui-label">长(cm)</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" type="number" bindinput="spaceXInputChange" placeholder="请填写长度" value="{{spaceX}}" />
+				</view>
+			</view>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<view class="weui-label">宽(cm)</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" type="number" bindinput="spaceYInputChange" placeholder="请填写宽度" value="{{spaceY}}" />
+				</view>
+			</view>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<view class="weui-label">高(cm)</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input class="weui-input" type="number" bindinput="spaceZInputChange" placeholder="请填写高度" value="{{spaceZ}}" />
+				</view>
+			</view>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<view class="weui-label">重量(kg)</view>
+				</view>
+				<view class="weui-cell__bd">
+					<input name="stores" class="weui-input" type="number" bindinput="weightInputChange" placeholder="请填写重量" value="{{weight}}" />
+				</view>
+			</view>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<view class="weui-label">商品规格</view>
+				</view>
+				<view class="weui-cell__bd">
+
+					<view class='size-label-box2'>
+						<view class='size-label-box'>
+							<block wx:for="{{specs}}" wx:for-item="specItem" wx:for-index="idx" wx:key="id">
+								<view class="label">{{specItem.name}}</view>
+								<view class="label-item-box">
+									<view class="label-item {{item.active ? 'active' : '' }}" wx:for="{{specItem.subSpecs}}" wx:key="id" bindtap="labelItemTap" data-specId="{{specItem._id}}" data-subSpecId="{{item._id}}">
+										{{item.name}}
+									</view>
+								</view>
+							</block>
+						</view>
+					</view>
+
+
+				</view>
+			</view>
+
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<view class="weui-label">轮播图</view>
+				</view>
+				<view class="weui-cell__bd">
+					<van-uploader file-list="{{ fileList }}" bind:delete="delete" bind:after-read="afterRead" />
+				</view>
+			</view>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<view class="weui-label">内容图</view>
+				</view>
+				<view class="weui-cell__bd">
+					<van-uploader file-list="{{ fileContentList }}" bind:delete="deleteContent" bind:after-read="afterContentRead" />
+				</view>
+			</view>
+			<view class="weui-btn-area">
+				<button type="primary" class="save-btn" formType="submit">提交</button>
+			</view>
+		</form>
+	</view>
+</view>

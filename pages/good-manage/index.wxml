@@ -1,0 +1,60 @@
+<view class="container">
+
+  <view class="search">
+    <view class="search-banner">
+    <input type="text" placeholder="输入搜索关键词" value="{{name}}" bindinput="bindinput" bindconfirm="bindconfirm"></input>
+    <image  src="/images/icon/search.svg"></image>
+    </view>
+    <image id="search-add"  bindtap="addGood" src="/images/add-addr.png"></image>
+  </view>
+  <view class="content-container">
+    <scroll-view class="category-container" scroll-y="true" scroll-with-animation="true">
+      <view wx:if="{{category.level == 1}}" class="category {{categorySelected.id==category.id?'active':''}}" wx:for="{{categories}}" wx:for-item="category" wx:key="id" data-id="{{category.id}}" bindtap="onCategoryClick">
+      		<image mode="aspectFill" data-id="{{category.id}}" bindtap="onCategoryClick" class="category-imgbox" src="{{category.icon}}"></image>
+        <view class="name {{categorySelected.id==category.id?'active':''}}">{{category.name}}</view>
+      </view>
+    </scroll-view>
+    <scroll-view class="goods-container" scroll-y="true" scroll-top="{{scrolltop}}" wx:if='{{onLoadStatus}}'>
+      <view wx:if="{{!currentGoods}}" class="no-data">
+        <view class="line"></view>
+        <view class="txt">暂无商品</view>
+        <view class="line"></view>
+      </view>
+      <block wx:for="{{categories}}" wx:key="id" wx:if="{{item.pid == categorySelected.id}}">
+        <navigator url="/pages/goods/list?categoryId={{item.id}}">
+          <view class="no-data medium-category">
+            <view class="line"></view>
+            <view class="txt">{{item.name}}</view>
+            <view class="line"></view>
+          </view>
+        </navigator>
+        <view class="small-category-box">
+          <navigator wx:for="{{categories}}" wx:for-item="small" wx:key="id" wx:if="{{small.pid == item.id}}" url="/pages/goods/list?categoryId={{small.id}}">
+            <view class="small-category">
+              <image mode="aspectFill" src="{{small.icon}}"></image>
+              <view>{{small.name}}</view>
+            </view>
+          </navigator>
+        </view>
+      </block>
+      
+      <view class="goods" wx:for="{{currentGoods}}" wx:key="id">
+        <image mode="aspectFill" class="pic" src="{{item.pic[0]}}" data-id='{{item._id}}' bindtap="toDetailsTap">
+          <!-- <image class='fresh-tag' src="/images/goods-description/fresh.png"></image> -->
+        </image>
+        <view class="name ellipsis" data-id='{{item._id}}' bindtap="toDetailsTap">{{item.name}}</view>
+				<view class='soldInfo'>
+					<view class='good-price-box'>
+						<text class="numberClass">已售 {{item.numberSells}}件</text>
+						<text class="price">¥{{item.minPrice}}</text>
+					</view>
+				</view>
+        <view class="editClass">
+            <image data-id="{{item._id}}" class="imageClass" bindtap="editGood" src="/images/icon/edit.svg"></image>
+            <image data-id="{{item._id}}" class="imageClass" bindtap="deleteGood" src="/images/icon/delete.svg"></image>
+        </view>
+
+      </view>
+    </scroll-view>
+  </view>
+</view>

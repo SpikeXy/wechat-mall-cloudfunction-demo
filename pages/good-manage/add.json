@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "新增商品",
+  "usingComponents": {
+    "van-uploader": "@vant/weapp/uploader/index"
+  }
+}

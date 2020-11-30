@@ -1,0 +1,32 @@
+<view class="container">
+	<view class="top-sec">
+		<view class="a-row customRow">
+			<view class="label">发货地址</view>
+			<view class="text" bindlongtap="copySenderAddress">{{transferEntity.linkman}} {{transferEntity.mobile}} {{transferEntity.provinceName}} {{transferEntity.city}} {{transferEntity.area}} {{transferEntity.address}}</view>
+		</view>
+		<view class="space"></view>
+		<view class="a-row customRow">
+			<view class="label" >收货地址</view>
+			<view class="text"  bindlongtap="copyReciverAddress">{{orderDetail.linkMan}} {{orderDetail.mobile}} {{orderDetail.provinceName}} {{orderDetail.city}} {{orderDetail.area}} {{orderDetail.address}}</view>
+		</view>
+		<view class="space"></view>
+		<view class="a-row  customRow">
+			<view class="label">选择快递</view>
+			<view class="">
+				<van-dropdown-menu>
+					<van-dropdown-item value="{{ transferCompanyName }}" options="{{ transferEnterpriseInfo }}" />
+				</van-dropdown-menu>
+			</view>
+		</view>
+        <view class="space"></view>
+		<view class="a-row  customRow">
+            <view class="label">快递单号</view>
+			<textarea auto-focus='false' name="textarea" value="{{transferNumber}}" bindinput='transferNumberInputChange' class="input-textarea" maxlength="5000" />
+			
+        </view>
+	    <view class="a-row  customSubmit"  bindtap="submitTransfer" >
+               提交
+        </view>
+	</view>
+
+</view>

@@ -1,0 +1,112 @@
+<import src="/template/login/index.wxml" />
+
+<view class="container">
+	<view  wx:if="{{isNeedLogin}}" class="noAvatarClass" >
+		<image class="userinfo-avatar" src="/images/nologin.png" background-size="cover"></image>
+		<button class="weui-btn mini-btn" plain="true" size="mini" bindtap="goLogin">立即登录</button>
+	</view>
+	<view  wx:else class="userinfo" >
+		<image wx:if="{{avatarLink}}" class="userinfo-avatar" src="{{ avatarLink }}" background-size="cover"></image>
+		<text class="userinfo-nickname">{{ userName }}</text>
+	</view>
+
+
+
+	<view class="line"></view>
+	<view class='order-shortcut'>
+		<!-- https://www.iconfont.cn/collections/detail?spm=a313x.7781069.0.da5a778a4&cid=2767 -->
+		<view class='item' bindtap='goOrder' data-status="0"  data-label="待付款" >
+			<view wx:if="{{count_id_no_pay !== 0}}" class='dot'>{{count_id_no_pay}}</view>
+			<image class="icon" src="/images/order/topay.png" background-size="cover"></image>
+			<view class='text'>待付款</view>
+		</view>
+		<view class='item' bindtap='goOrder' data-status="1"  data-label="待发货">
+			<view wx:if="{{count_id_no_transfer !== 0}}" class='dot'>{{count_id_no_transfer}}</view>
+			<image class="icon" src="/images/order/fahuo.png" background-size="cover"></image>
+			<view class='text'>待发货</view>
+		</view>
+		<view class='item' bindtap='goOrder' data-status="2"  data-label="待收货">
+			<view wx:if="{{count_id_no_confirm !== 0}}" class='dot'>{{count_id_no_confirm}}</view>
+			<image class="icon" src="/images/order/shouhuo.png" background-size="cover"></image>
+			<view class='text'>待收货</view>
+		</view>
+		<view class='item' bindtap='goOrder' data-status="3"  data-label="待评价">
+			<view wx:if="{{count_id_no_reputation !== 0}}" class='dot'>{{count_id_no_reputation}}</view>
+			<image class="icon" src="/images/order/pj.png" background-size="cover"></image>
+			<view class='text'>待评价</view>
+		</view>
+		<!-- <view class='item' bindtap='goRefund' >
+			<image class="icon" src="/images/order/shouhou.png" background-size="cover"></image>
+			<view class='text'>售后</view>
+		</view> -->
+	</view>
+
+	<view class="line"></view>
+
+	<view class="space"></view>
+	<navigator url="/pages/order-list/index">
+		<view class="menu-item">
+			<view class="l">我的订单</view>
+			<image class="next" src="/images/icon/next.png"></image>
+		</view>
+	</navigator>
+
+
+	<view class="space"></view>
+	<!-- <view class="line"></view> -->
+	<!-- <navigator url="/pages/coupons/index">
+		<view class="menu-item">
+			<view class="l">领券中心</view>
+			<image class="next" src="/images/icon/next.png"></image>
+		</view>
+	</navigator> -->
+	<view class="line"></view>
+	<navigator url="/pages/goods/fav">
+		<view class="menu-item">
+			<view class="l">我的收藏</view>
+			<image class="next" src="/images/icon/next.png"></image>
+		</view>
+	</navigator>
+
+
+	<view class="line"></view>
+	<navigator url="/pages/aboutUs/index">
+		<view class="menu-item">
+			<view class="l">关于我们</view>
+			<image class="next" src="/images/icon/next.png"></image>
+		</view>
+	</navigator>
+	<view class="line"></view>
+	<view wx:if="{{phoneNumber}}" class="menu-item">
+		<view class="l">绑定手机</view>
+		<view class="r">{{ phoneNumber }}</view>
+	</view>
+	<view wx:else class="menu-item">
+		<view class="l">绑定手机</view>
+		<button type="primary" size="mini" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">立即绑定</button>
+	</view>
+	<view class="line"></view>
+</view>
+
+
+
+<view >
+  <view class="apifmLogin" hidden="{{wxlogin}}">
+    <view class="s-b">
+      <view class="s-l-b">
+        <image src="/images/nologin.png" />
+        <text>授权登录</text>
+      </view>
+      <view class="s-t-b">
+        <view class="s-t-i">
+          <text>·</text>请授权小程序登录</view>
+        <view class="s-t-i">
+          <text>·</text>我们不会公布您的这些信息</view>
+        <view class="s-t-i">
+          <text>·</text>只是为了给您提供更好的服务</view>
+      </view>
+      <button class="l" open-type="getUserInfo" disabled="{{isClickGetUserInfo}}" bindgetuserinfo="bindGetUserInfo">允许</button>
+      <button class="c" bindtap="cancelLogin" type="default">暂不登录</button>
+    </view>
+  </view>
+</view>

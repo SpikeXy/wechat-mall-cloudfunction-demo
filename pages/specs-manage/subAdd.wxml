@@ -1,0 +1,7 @@
+<view class="notice">
+	<view class="title">
+		<input name="name" class="weui-input" type="text" bindinput="nameInputChange" placeholder="请填写规格名称" value="{{name}}" /></view>
+	<view class="addButtonClass">
+		<button type="primary" class="save-btn" bindtap="submitSpecs">提交</button>
+	</view>
+</view>

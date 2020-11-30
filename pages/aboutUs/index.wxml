@@ -1,0 +1,56 @@
+<!--pages/aboutUs/index.wxml-->
+<view class="container">
+	<text>祝大家购物愉快</text>
+	<view wx:if="{{isAdmin}}">
+		<view class="space"></view>
+		<navigator url="/pages/good-manage/index">
+			<view class="menu-item">
+				<view class="l">商品管理</view>
+				<image class="next" src="/images/icon/next.png"></image>
+			</view>
+		</navigator>
+		<view class="space"></view>
+		<navigator url="/pages/notice-manage/index">
+			<view class="menu-item">
+				<view class="l">首页滚动消息管理</view>
+				<image class="next" src="/images/icon/next.png"></image>
+			</view>
+		</navigator>
+		<view class="space"></view>
+		<navigator url="/pages/specs-manage/index">
+			<view class="menu-item">
+				<view class="l">商品规格管理</view>
+				<image class="next" src="/images/icon/next.png"></image>
+			</view>
+		</navigator>
+		<view class="space"></view>
+		<navigator url="/pages/good-recommand-manage/index">
+			<view class="menu-item">
+				<view class="l">商品推荐管理</view>
+				<image class="next" src="/images/icon/next.png"></image>
+			</view>
+		</navigator>
+		<view class="space"></view>
+
+		<navigator url="/pages/rotation-manage/index">
+			<view class="menu-item">
+				<view class="l">轮播图管理</view>
+				<image class="next" src="/images/icon/next.png"></image>
+			</view>
+		</navigator>
+		<view class="space"></view>
+		<navigator url="/pages/order-manage/index">
+			<view class="menu-item">
+				<view class="l">订单管理</view>
+				<image class="next" src="/images/icon/next.png"></image>
+			</view>
+		</navigator>
+				<view class="space"></view>
+		<navigator url="/pages/transfer-manage/index">
+			<view class="menu-item">
+				<view class="l">物流管理</view>
+				<image class="next" src="/images/icon/next.png"></image>
+			</view>
+		</navigator>
+	</view>
+</view>
