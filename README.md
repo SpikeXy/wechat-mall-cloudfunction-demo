@@ -25,6 +25,3 @@
 
 ![详情页](https://github.com/xiaolizi007/wechat-mall-cloudfunction-demo/blob/master/discription/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20201130222020.jpg)
 
-![用户页](https://github.com/xiaolizi007/wechat-mall-cloudfunction-demo/blob/master/discription/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20201130222025.jpg)
-
-![订单列表页](https://github.com/xiaolizi007/wechat-mall-cloudfunction-demo/blob/master/discription/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20201130222028.jpg)
