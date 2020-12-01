@@ -16,3 +16,15 @@
 
 2. 不再维护，供大家参考
 
+
+![首页](https://github.com/xiaolizi007/wechat-mall-cloudfunction-demo/blob/master/discription/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20201130221955.jpg)
+
+![首页瀑布流](https://github.com/xiaolizi007/wechat-mall-cloudfunction-demo/blob/master/discription/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20201130222007.jpg)
+
+![分类页](https://github.com/xiaolizi007/wechat-mall-cloudfunction-demo/blob/master/discription/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20201130222011.jpg)
+
+![详情页](https://github.com/xiaolizi007/wechat-mall-cloudfunction-demo/blob/master/discription/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20201130222020.jpg)
+
+![用户页](https://github.com/xiaolizi007/wechat-mall-cloudfunction-demo/blob/master/discription/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20201130222025.jpg)
+
+![订单列表页](https://github.com/xiaolizi007/wechat-mall-cloudfunction-demo/blob/master/discription/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20201130222028.jpg)
