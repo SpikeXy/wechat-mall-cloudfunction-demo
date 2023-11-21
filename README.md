@@ -2,7 +2,7 @@
 
 微信小程序商城，js原生开发，采用了vant和colorUI，改造版本，云开发版本
 
-仿wecht-app-mall,原项目地址为[https://github.com/EastWorld/wechat-app-mall]{https://github.com/EastWorld/wechat-app-mall}
+仿wecht-app-mall,原项目地址为[https://github.com/EastWorld/wechat-app-mall](https://github.com/EastWorld/wechat-app-mall)
 
 ### 特点：
 1. 云开发，不需要域名和服务器
